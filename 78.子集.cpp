@@ -19,7 +19,7 @@ public:
     vector<vector<int>> subsets(vector<int>& nums) {
         int n = nums.size();
         for(int mask = 0; mask <(1 << n) ; ++mask){
-            t.clear();
+            t.clear();                      //位运算
             for(int i = 0; i < n; ++i){     // e.g1 101 & 001 != 0 101 & 100 != 0
                 if(mask & (1 << i)){        // e.g2 101 & 010 == 0
                     t.push_back(nums[i]);   // 即只要不是每位相反结果就不为0
