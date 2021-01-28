@@ -22,16 +22,22 @@ public:
     int minDepth(TreeNode* root) {
         if(root == nullptr) 
             return 0;
-        if(root->left == nullptr && root->right == nullptr)
-            return 1;
-        int min_depth = INT_MAX;
-        if(root->left != nullptr){
-            min_depth = min(minDepth(root->left), min_depth);
-        }
-        if(root->right != nullptr){
-            min_depth = min(minDepth(root->right), min_depth);
-        }
-        return min_depth + 1;
+        else if(root->left == nullptr)
+            return minDepth(root->right) + 1;
+        else if(root->right == nullptr)
+            return minDepth(root->left) + 1;
+        else
+            return min(minDepth(root->left),minDepth(root->right)) + 1;
+        // if(root->left == nullptr && root->right == nullptr)
+        //     return 1;
+        // int min_depth = INT_MAX;
+        // if(root->left != nullptr){
+        //     min_depth = min(minDepth(root->left), min_depth);
+        // }
+        // if(root->right != nullptr){
+        //     min_depth = min(minDepth(root->right), min_depth);
+        // }
+        // return min_depth + 1;
     }
 };
 // @lc code=end
