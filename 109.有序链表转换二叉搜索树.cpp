@@ -8,23 +8,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-  };
+// struct ListNode {
+//     int val;
+//     ListNode *next;
+//     ListNode() : val(0), next(nullptr) {}
+//     ListNode(int x) : val(x), next(nullptr) {}
+//     ListNode(int x, ListNode *next) : val(x), next(next) {}
+//   };
 
 
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-  };
+// struct TreeNode {
+//     int val;
+//     TreeNode *left;
+//     TreeNode *right;
+//     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+//     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+//     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+//   };
 
 class Solution {
 public:
@@ -36,11 +36,11 @@ public:
         ListNode *p = head, *q = head, *pre =NULL;
         while(q != NULL && q->next == NULL){
             pre = p;
-            p = p->next;      //p走一步 p指向mid位置
-            q = q->next->next;//q走两步 q指向末尾
+            p = p->next;      //p走一步 p最后指向mid位置
+            q = q->next->next;//q走两步 q最后指向末尾
         }
-        // 这句话是用来切割链表的，递归的跳出条件即为空。 
-        // 否则 root.left = sortedListToBST(head); 会一直往后面到链表最后面。
+        // 这句话是用来切割链表的，从中间切开，递归的跳出条件即为空。 
+        // 否则 root.left = sortedListToBST(head); 会一直往后面到链表末尾。
         pre->next == NULL;
         
         // 以升序链表的中间元素作为根节点 root，递归的构建 root 的左子树与右子树。
