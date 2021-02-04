@@ -18,7 +18,7 @@ public:
             sum += nums[i];
         }
         int res = sum;             // 暂存第一个窗口sum为最大
-        for(int i = k; i < n; ++i){// 窗口向后移 每次一位 便要加新窗口新加的 减去旧窗口的（滑动）
+        for(int i = k; i < n; ++i){// 窗口向后移 每次一位 便要加上新窗口加的一位 去掉旧窗口的一位（滑动）
             sum = sum + nums[i] - nums[i - k];
             res = max(res, sum);
         } 
