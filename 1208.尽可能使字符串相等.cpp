@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=643 lang=cpp
+ * @lc app=leetcode.cn id=1208 lang=cpp
  *
- * [643] 子数组最大平均数 I
+ * [1208] 尽可能使字符串相等
  */
 
 // @lc code=start
@@ -10,7 +10,7 @@ using namespace std;
 
 class Solution {
 public:
-    double findMaxAverage(vector<int>& nums, int k) {
+    int equalSubstring(string s, string t, int maxCost) {
         // 滑动窗口 模板
         // def findSubArray(nums):
         //     N = len(nums) # 数组/字符串长度
@@ -26,21 +26,30 @@ public:
         //         res = max(res, right - left + 1) # 需要更新结果
         //         right += 1 # 移动右指针，去探索新的区间
         //     return res
-        // 以右指针作为驱动，拖着左指针向前走。右指针每次只移动一步，
-        // 而左指针在内部 while 循环中每次可能移动多步。
-        // 右指针是主动前移，探索未知的新区域；
-        // 左指针是被迫移动，负责寻找满足题意的区间。
-        int sum = 0;
-        int n = nums.size();
-        for(int i = 0; i < k; ++i){// 看第一个窗口
-            sum += nums[i];
+
+        // 对于 s = "abcd", t = "bcdf", cost = 3 而言，
+        // 我们使用 diff[i] 表示从 s[i]  转成 t[i] 的开销，
+        // 那么 costs = [1, 1, 1, 2] 。由于 maxCost = 3， 
+        // 所以最多允许其前面三个字符进行转换
+
+        int n = s.size();
+        vector<int> diff(n, 0);// 大小为n 初值为0
+        for(int i= 0; i < n; ++i){
+            diff[i] = abs(s[i] - t[i]);
         }
-        int res = sum;             // 暂存第一个窗口sum为最大
-        for(int i = k; i < n; ++i){// 窗口向后移 每次一位 便要加上新窗口加的一位 去掉旧窗口的一位（滑动）
-            sum = sum + nums[i] - nums[i - k];
-            res = max(res, sum);
-        } 
-        return (double)res/k;
+        int maxLength = 0;
+        int left = 0, right = 0;
+        int sum = 0;
+        while(right < n){
+            sum += diff[right];
+            while(sum > maxCost){ // 寻找符合条件 左指针右移
+                sum -= diff[left];
+                left++;
+            }
+            maxLength = max(maxLength, right - left + 1);
+            right++;
+        }
+        return maxLength;
     }
 };
 // @lc code=end
