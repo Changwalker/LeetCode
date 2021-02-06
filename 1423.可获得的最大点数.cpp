@@ -20,7 +20,7 @@ public:
         }
         int res = sum;
         for(int i = 0; i < k; ++i){
-            sum += cardPoints[n - 1 - i];// 从第一位往前滑动 前k个滑到i后k个
+            sum += cardPoints[n - 1 - i];// 从第一位往前滑动 前k个滑到后k个
             sum -= cardPoints[k - 1 - i];
             res = max(res, sum);
         }
