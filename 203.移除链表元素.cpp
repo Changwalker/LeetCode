@@ -45,6 +45,17 @@ public:
         ListNode *ret = node->next;
         delete node;
         return ret;
+
+
+        // 2.递归
+        if(head == NULL)
+            return NULL;
+        head->next = removeElements(head->next, val);
+        if(head->val == val){
+            return head->next;
+        }
+        else 
+            return head;
     }
 };
 // @lc code=end
