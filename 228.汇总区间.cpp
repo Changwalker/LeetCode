@@ -19,7 +19,7 @@ public:
             int right = left + 1;
             while(right < n && nums[right] == nums[right - 1] + 1)
                 right++;
-            if(right != left + 1){
+            if(right != left + 1){// 相邻两项发生跳跃
                 s += "->";
                 s += to_string(nums[right - 1]); // 右指针向后多移了一位 -1
             }
