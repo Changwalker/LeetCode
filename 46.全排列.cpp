@@ -27,8 +27,8 @@ public:
     }
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> res;
-        dfs(res, nums, 0, (int)nums.size());
-        return res; 
+        dfs(res, nums, 0, (int)nums.size()); 
+        return res;
     }
 };
 // @lc code=end
