@@ -13,6 +13,7 @@ public:
     int romanToInt(string s) {//从头开始遍历，若当前字母大于后一个则加 若当前字母小于后一个则减
         int n = s.size();
         int res = 0;
+        
         map<char,int> roman={//初始化哈希表
             {'I',1},
             {'V',5},
