@@ -19,8 +19,7 @@ using namespace std;
 
 class Solution {
 public:
-    bool isCousins(TreeNode* root, int x, int y) {
-        using PTT = pair<TreeNode*, TreeNode*>;
+    using PTT = pair<TreeNode*, TreeNode*>;
     bool isCousins(TreeNode* root, int x, int y) {
         // 使用队列q来进行bfs
         // 其中pair中，p.first 记录当前结点的指针，p.second 记录当前结点的父结点的指针
