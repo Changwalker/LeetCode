@@ -11,9 +11,11 @@ public:
         int l = 0, r = nums.size() - 1;
         while(l < r){
             int mid = l + (r - l) / 2;
+            // 如果中间位置的值小于最右面的值，说明从mid到r可能在递增，突变最小值可能在右面
             if(nums[mid] < nums[r]){
                 r = mid;
             }
+            // 如果中间位置的值大于最右面的值，说明突变最小值在mid的右面
             else if(nums[mid] > nums[r]){
                 l = mid + 1;
             }
